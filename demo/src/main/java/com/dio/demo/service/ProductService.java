@@ -1,0 +1,27 @@
+package com.dio.demo.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.dio.demo.repository.ProductRepository;
+import com.dio.demo.model.Product;
+import com.dio.demo.factory.ProductFactory;
+import java.util.List;
+
+@Service
+public class ProductService {
+  @Autowired
+  private ProductRepository repository;
+
+  public Product createProduct(String name, Double price, String type) {
+    Product product = ProductFactory.createProduct(name, price, type);
+    return repository.save(product);
+  }
+
+  public Product getProduct(Long id) {
+    return repository.findById(id).orElseThrow();
+  }
+
+  public List<Product> getAllProducts() {
+    return repository.findAll();
+  }
+}
