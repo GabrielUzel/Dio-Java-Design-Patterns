@@ -20,4 +20,12 @@ public class Product {
     this.price = price;
     this.type = type;
   }
+
+  public double getPrice() {
+    return this.price;
+  }
+
+  public String getType() {
+    return this.type;
+  }
 }

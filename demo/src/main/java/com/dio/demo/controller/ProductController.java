@@ -35,4 +35,10 @@ public class ProductController {
   public List<Product> list() {
     return service.getAllProducts();
   }
+
+  @GetMapping("/{id}/discounted")
+  public double getDiscountedPrice(@PathVariable Long id) {
+    Product product = service.getProduct(id);
+    return service.getDiscountedPrice(product);
+  }
 }
